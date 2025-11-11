@@ -1,0 +1,317 @@
+/* 
+  ProductDetail.css - Vintage Premium Edition
+  สไตล์วินเทจระดับพรีเมียม พร้อมเอฟเฟกต์พิเศษและความละเอียดทุกส่วน
+  Designed with ❤️ by your AI Stylist
+*/
+
+:root {
+  /* โทนสีวินเทจพรีเมียม */
+  --vintage-bg-color: #f5f5dc;
+  --vintage-text-color: #3b3a32;
+  --vintage-border-color: #a3a299;
+  --vintage-accent-color: #8b4513;
+  --vintage-paper-texture: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.1"/></svg>');
+  --vintage-font-serif: 'Playfair Display', serif;
+  --vintage-font-heading: 'Bebas Neue', sans-serif;
+  --vintage-font-content: 'Merriweather', serif;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ส่วนของหน้าจอโดยรวม
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.product-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 50px auto 0;
+  font-family: var(--vintage-font-serif);
+  background-color: var(--vintage-bg-color);
+  color: var(--vintage-text-color);
+  background-image: var(--vintage-paper-texture);
+  position: relative;
+  overflow: hidden;
+}
+
+/* เอฟเฟกต์มุมฉีกขาด */
+.product-detail-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, transparent 50%, var(--vintage-accent-color) 50%);
+  opacity: 0.1;
+}
+
+.product-detail-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+/* เอฟเฟกต์ขอบใต้หัวข้อ */
+.product-detail-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--vintage-accent-color);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ส่วนแสดงผลหลัก
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.product-detail-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   กล่องรูปภาพ (ฝั่งซ้าย)
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.product-image-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2),
+              inset 0 0 20px rgba(0, 0, 0, 0.05);
+  position: relative;
+  border: 1px solid var(--vintage-border-color);
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+/* เอฟเฟกต์เมื่อโฮเวอร์ */
+.product-image-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* กรอบรูปภาพ */
+.react-image-magnify-image {
+  border: 3px solid var(--vintage-text-color);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.react-image-magnify-image:hover {
+  border-color: var(--vintage-accent-color);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   กล่องข้อมูลสินค้า (ฝั่งขวา)
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.product-info {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 30px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--vintage-border-color);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2),
+              inset 0 0 20px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* เอฟเฟกต์มุมฉลุ */
+.product-info::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(-45deg, transparent 50%, var(--vintage-accent-color) 50%);
+  opacity: 0.1;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ส่วนหัวข้อและเนื้อหา
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.product-info h1,
+.product-info h2,
+.product-info h3 {
+  font-family: var(--vintage-font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 2px solid var(--vintage-accent-color);
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.product-info h1 {
+  font-size: 2.5rem;
+  color: var(--vintage-accent-color);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.product-info h2, 
+.product-info h3 {
+  font-size: 1.5rem;
+  color: var(--vintage-text-color);
+}
+
+.product-info p,
+.product-info li {
+  font-family: var(--vintage-font-content);
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ส่วนราคาและปุ่ม
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.price-text {
+  font-size: 2.2rem;
+  color: var(--vintage-accent-color);
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  position: relative;
+  display: inline-block;
+}
+
+/* เอฟเฟกต์เส้นใต้ราคา */
+.price-text::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--vintage-accent-color), transparent);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ปุ่ม "ซื้อเลย" (Premium Version)
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.add-button {
+  background-color: var(--vintage-accent-color);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  font-family: var(--vintage-font-heading);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 0 0 darken(var(--vintage-accent-color), 15%),
+              0 10px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* เอฟเฟกต์แสงเมื่อโฮเวอร์ */
+.add-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.add-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 0 darken(var(--vintage-accent-color), 15%),
+              0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.add-button:hover::before {
+  opacity: 1;
+  animation: shine 1.5s infinite;
+}
+
+.add-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 0 darken(var(--vintage-accent-color), 15%);
+}
+
+@keyframes shine {
+  0% {
+    left: -50%;
+    top: -50%;
+  }
+  100% {
+    left: 150%;
+    top: 150%;
+  }
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Responsive Design
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media (max-width: 768px) {
+  .product-detail-container {
+    padding: 30px 15px;
+    margin-top: 40px;
+  }
+  
+  .product-info h1 {
+    font-size: 2rem;
+  }
+  
+  .price-text {
+    font-size: 1.8rem;
+  }
+  
+  .add-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-detail-container {
+    padding: 20px 10px;
+    margin-top: 30px;
+  }
+  
+  .product-image-container,
+  .product-info {
+    min-width: 90%;
+    padding: 20px;
+  }
+  
+  .product-info h1 {
+    font-size: 1.8rem;
+  }
+  
+  .price-text {
+    font-size: 1.6rem;
+  }
+  
+  .add-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,450 @@
+/* 
+  Vintage Header - Premium Edition
+  Designed with ❤️ by your AI Stylist
+*/
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   โทนสีและตัวแปรระดับพรีเมียม
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+   :root {
+    --vintage-bg-color: #f5f5dc;
+    --vintage-text-color: #3b3a32;
+    --vintage-border-color: #a3a299;
+    --vintage-accent-color: #8b4513;
+    --vintage-gold: #c5a880;
+    --vintage-dark-overlay: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Header แบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    height: 80px;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), 
+                url("/public/Imagebackground/backgroundsmoke.jpg") center/cover no-repeat;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid var(--vintage-gold);
+    backdrop-filter: blur(2px);
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     ส่วนโลโก้แบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .logo:hover {
+    transform: scale(1.02);
+  }
+  
+  .header-logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--vintage-gold);
+    font-family: 'Cinzel Decorative', cursive;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7),
+                 0 0 10px rgba(197, 168, 128, 0.5);
+    position: relative;
+  }
+  
+  .header-logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--vintage-gold), transparent);
+  }
+  
+  .headerlogo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--vintage-gold);
+    box-shadow: 0 0 15px rgba(197, 168, 128, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .headerlogo:hover {
+    transform: rotate(15deg);
+    box-shadow: 0 0 20px rgba(197, 168, 128, 0.8);
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Navigation แบบหรูหรา
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav li {
+    position: relative;
+    padding: 5px 0;
+  }
+  
+  .nav li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--vintage-gold);
+    transition: width 0.3s ease;
+  }
+  
+  .nav li:hover::after {
+    width: 100%;
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    padding: 10px 5px;
+    position: relative;
+  }
+  
+  .nav a:hover {
+    color: var(--vintage-gold);
+    text-shadow: 0 0 10px rgba(197, 168, 128, 0.7);
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Search Bar แบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .search-container {
+    position: relative;
+    width: 500px;
+    margin: 0 30px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 12px 45px 12px 20px;
+    font-size: 1rem;
+    border-radius: 30px;
+    border: 1px solid var(--vintage-border-color);
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--vintage-text-color);
+    font-family: 'Merriweather', serif;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .search-input:focus {
+    border-color: var(--vintage-gold);
+    box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.3),
+                inset 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--vintage-text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .search-container:hover .search-icon {
+    color: var(--vintage-accent-color);
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     ส่วน Login/User แบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .login {
+    
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    
+  }
+
+  .thelogouser img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    /* New premium styling */
+    border: 2px solid transparent;
+    box-shadow: 
+        0 0 0 2px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(197, 168, 128, 0.6),
+        inset 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: sepia(0.3) contrast(1.1);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.thelogouser img:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 0 0 3px var(--vintage-gold),
+        0 0 25px rgba(197, 168, 128, 0.8),
+        inset 0 0 15px rgba(0, 0, 0, 0.3);
+    filter: sepia(0.5) contrast(1.2) brightness(1.05);
+    border-color: var(--vintage-gold);
+}
+
+.thelogouser img::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 1px solid var(--vintage-gold);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.thelogouser img:hover::after {
+    opacity: 0.8;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+}
+
+/* Optional: Add pulse animation on click */
+.thelogouser img:active {
+    animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1.1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1.1); }
+}
+  
+
+  /* .button-login{
+    border-radius: 100%;
+  }
+
+ 
+  .button-login img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid var(--vintage-gold);
+    box-shadow: 0 0 15px rgba(197, 168, 128, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .button-login img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(197, 168, 128, 0.8);
+  } */
+  
+  .UserNameEmail {
+    font-size: 1rem;
+    color: var(--vintage-gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    background-color: var(--vintage-text-color);
+    color: var(--vintage-bg-color);
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 4px;
+    position: absolute;
+    top: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-family: 'Merriweather', serif;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: 1px solid var(--vintage-gold);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .button-logout {
+    background: linear-gradient(to bottom, var(--vintage-accent-color), #5a3a1e);
+    color: white;
+    margin-left: 30px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button-logout:hover {
+    background: linear-gradient(to bottom, #9c3a3a, #7a2a2a);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .button-logout:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Responsive Design
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  @media (max-width: 1200px) {
+    .search-container {
+      width: 250px;
+      margin: 0 20px;
+    }
+    
+    .nav ul {
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .header {
+      padding: 0 20px;
+      height: 70px;
+    }
+    
+    .header-logo-text {
+      font-size: 1.8rem;
+    }
+    
+    .search-container {
+      width: 200px;
+    }
+    
+    .nav a {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      flex-wrap: wrap;
+      height: auto;
+      padding: 15px;
+    }
+    
+    .logo {
+      order: 1;
+      margin-bottom: 15px;
+    }
+    
+    .search-container {
+      order: 3;
+      width: 100%;
+      margin: 15px 0;
+    }
+    
+    .nav {
+      order: 2;
+      margin-left: auto;
+    }
+    
+    .login {
+      order: 4;
+      margin-left: auto;
+      margin-top: 15px;
+    }
+    
+    .nav ul {
+      gap: 15px;
+    }
+    
+    .nav a {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .header-logo-text {
+      font-size: 1.5rem;
+    }
+    
+    .headerlogo {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .nav ul {
+      gap: 10px;
+    }
+    
+    .nav a {
+      font-size: 0.9rem;
+    }
+    
+    .button-login img {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .UserNameEmail {
+      font-size: 0.9rem;
+    }
+    
+    .button-logout {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+    }
+  }

@@ -1,0 +1,55 @@
+{
+  "name": "vintage-shop",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.8.4",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-icons": "^5.5.0",
+    "react-image-lightbox": "^5.1.4",
+    "react-image-magnify": "^2.7.4",
+    "react-router-dom": "^6.0.0",
+    "react-scripts": "5.0.1",
+    "react-scroll": "^1.9.3",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run start-react\" \"npm run start-php\"",
+    "start-react": "react-scripts start",
+    "start-php-login": "php -S localhost:8000 -t backend/loginandregister",
+    "start-php-itemshop": "php -S localhost:8001 -t backend/item_shop",
+    "start-php": "concurrently \"npm run start-php-login\" \"npm run start-php-itemshop\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

@@ -1,0 +1,37 @@
+/* Slider Mini Container */
+.slidermini-container {
+  width: 90%; /* ให้สไลด์กว้าง 90% ของหน้าจอ */
+  max-width: 1200px; /* ไม่ให้เกิน 1200px */
+  margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+  margin-top: 20px;
+  margin-right: 140px;
+}
+
+/* ขนาดรูปภาพใน mini slider */
+.slidermini-container img {
+  margin-top: 10px;
+  width: 100px;  /* ปรับขนาดรูป */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px; /* ทำให้ขอบโค้ง */
+}
+
+/* รองรับหน้าจอมือถือ (max-width: 768px) */
+@media (max-width: 390px) {
+  body, html {
+    width: 100vw;  /* กว้างเต็มหน้าจอ */
+    height: auto;  /* ยาวตามเนื้อหา */
+    overflow-x: hidden; /* ป้องกันเลื่อนแนวนอน */
+  }
+
+  .slidermini-container {
+    width: 13%; /* ขยายความกว้างให้เต็มที่มากขึ้นในมือถือ */
+    margin-left: 850px; /* เอา margin-right ออก */
+  }
+
+  .slidermini-container img {
+    width: 30px;  /* ปรับขนาดรูปให้เล็กลงในมือถือ */
+    height: 30px;
+  }
+}
+

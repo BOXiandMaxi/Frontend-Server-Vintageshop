@@ -1,0 +1,392 @@
+/* 
+  Vintage Payment Page - Premium Edition
+  Designed with ❤️ by your AI Stylist
+*/
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   โทนสีและตัวแปรระดับพรีเมียม
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+   :root {
+    /* โทนสีหลัก */
+    --vintage-bg-color: #f5f5dc;
+    --vintage-text-color: #3b3a32;
+    --vintage-border-color: #a3a299;
+    --vintage-accent-color: #8b4513;
+    --vintage-red-price: #8a0303;
+    --vintage-green-ok: #2e6423;
+    
+    /* โทนสีเสริมระดับพรีเมียม */
+    --vintage-gold-accent: #c5a880;
+    --vintage-deep-brown: #5a3a1e;
+    --vintage-paper-light: #fcf8f0;
+    
+    /* ฟอนต์ระดับพรีเมียม */
+    --vintage-font-heading: 'Bebas Neue', sans-serif;
+    --vintage-font-subhead: 'Playfair Display', serif;
+    --vintage-font-body: 'Cormorant Garamond', serif;
+    --vintage-font-accent: 'Cinzel Decorative', cursive;
+    
+    /* เอฟเฟกต์ */
+    --vintage-texture: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     พื้นฐานและโครงสร้างหลัก
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .pay-page {
+    background: var(--vintage-paper-light);
+    background-image: var(--vintage-texture);
+    min-height: 100vh;
+    padding: 0;
+    font-family: var(--vintage-font-body);
+    color: var(--vintage-text-color);
+    line-height: 1.8;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     กล่องหลักแบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .pay-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 50px;
+    background: var(--vintage-bg-color);
+    background-image: var(--vintage-texture);
+    border: 2px double var(--vintage-border-color);
+    border-radius: 2px;
+    box-shadow: 12px 12px 35px rgba(0, 0, 0, 0.12),
+                inset 0 0 25px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* เอฟเฟกต์มุมกระดาษ */
+  .pay-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, transparent 45%, var(--vintage-gold-accent) 45%);
+    opacity: 0.2;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     ส่วนหัวข้อแบบหรูหรา
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .pay-head { 
+    text-align: center; 
+    margin-bottom: 50px;
+    position: relative;
+  }
+  
+  .pay-lock {
+    width: 60px;
+    height: 40px;
+    opacity: 0.7;
+    filter: sepia(0.5);
+  }
+  
+  .pay-head h1 {
+    font-family: var(--vintage-font-accent);
+    font-size: 2.8rem;
+    margin: 15px 0 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--vintage-deep-brown);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .pay-head h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--vintage-gold-accent), transparent);
+  }
+  
+  .pay-sub {
+    margin: 0;
+    font-size: 1.2rem;
+    font-family: var(--vintage-font-subhead);
+    letter-spacing: 0.5px;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     สรุปออเดอร์แบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .pay-summary h2, 
+  .pay-bank h2 {
+    font-family: var(--vintage-font-subhead);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--vintage-gold-accent);
+    color: var(--vintage-deep-brown);
+  }
+  
+  .pay-order-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    row-gap: 15px;
+    column-gap: 20px;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+  
+  .pay-amount {
+    color: var(--vintage-red-price);
+    font-weight: 700;
+    font-size: 1.8rem;
+    font-family: var(--vintage-font-heading);
+    letter-spacing: 1px;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     การ์ดธนาคารแบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .bank-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .bank-card {
+    flex: 1 1 300px;
+    display: flex;
+    gap: 25px;
+    padding: 25px;
+    border: 1px solid var(--vintage-border-color);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .bank-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.12);
+  }
+  
+  .bank-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    opacity: 0.8;
+    filter: sepia(0.3);
+  }
+  
+  .bank-name {
+    margin: 0;
+    font-family: var(--vintage-font-subhead);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--vintage-deep-brown);
+  }
+  
+  .bank-acc, 
+  .bank-holder {
+    font-family: var(--vintage-font-body);
+    font-size: 1.1rem;
+    margin: 5px 0;
+    letter-spacing: 0.5px;
+  }
+  
+  .bank-holder {
+    color: var(--vintage-text-color);
+    font-style: italic;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     QR Code และส่วนอัปโหลด
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .pay-or {
+    text-align: center;
+    margin: 30px 0;
+    font-family: var(--vintage-font-heading);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color: var(--vintage-text-color);
+    position: relative;
+  }
+  
+  .pay-or::before,
+  .pay-or::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--vintage-border-color), transparent);
+  }
+  
+  .pay-or::before {
+    left: 0;
+  }
+  
+  .pay-or::after {
+    right: 0;
+  }
+  
+  .pay-qr {
+    display: block;
+    margin: 0 auto;
+    width: 280px;
+    height: 280px;
+    border: 2px solid var(--vintage-border-color);
+    border-radius: 2px;
+    object-fit: contain;
+    padding: 10px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .bank-fullimg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 40px;
+    border: 2px solid var(--vintage-border-color);
+    border-radius: 2px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 10px;
+    background: white;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     ฟอร์มอัปโหลดแบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .pay-slip-form {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .btn-upload {
+    background: linear-gradient(to bottom, var(--vintage-accent-color), var(--vintage-deep-brown));
+    color: white;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 2px;
+    font-family: var(--vintage-font-heading);
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-upload:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-upload:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pay-msg {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  .pay-msg.ok {
+    color: var(--vintage-green-ok);
+    font-weight: 600;
+    font-family: var(--vintage-font-subhead);
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Footer แบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .pay-footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--vintage-text-color);
+    font-family: var(--vintage-font-body);
+  }
+  
+  .pay-footer a {
+    color: var(--vintage-accent-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px dotted var(--vintage-accent-color);
+  }
+  
+  .pay-footer a:hover {
+    color: var(--vintage-deep-brown);
+    border-bottom: 1px solid var(--vintage-deep-brown);
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Responsive Design
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  @media (max-width: 992px) {
+    .pay-container {
+      padding: 40px;
+      margin: 30px auto;
+    }
+    
+    .pay-head h1 {
+      font-size: 2.4rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .pay-container {
+      width: 95%;
+      padding: 30px;
+      margin: 20px auto;
+    }
+    
+    .pay-head h1 {
+      font-size: 2rem;
+    }
+    
+    .pay-order-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .bank-card {
+      flex: 1 1 100%;
+    }
+    
+    .pay-qr {
+      width: 240px;
+      height: 240px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .pay-container {
+      padding: 25px 20px;
+      margin: 15px auto;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+    
+    .pay-head h1 {
+      font-size: 1.8rem;
+    }
+    
+    .btn-upload {
+      width: 100%;
+      padding: 12px;
+    }
+  }

@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /vintage-shop/
+
+# ยกเว้นไม่ให้ rewrite ไปที่ check_login.php
+RewriteCond %{REQUEST_URI} !^/vintage-shop/backend/loginandregister/check_login\.php$
+
+# อนุญาตให้เข้าถึง index.html ตรง ๆ
+RewriteRule ^index\.html$ - [L]
+
+# ตรวจสอบว่าเป็นไฟล์จริงหรือไม่
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# รีไรท์ URL ไปที่ index.php
+RewriteRule ^(.+)$ index.php [L]

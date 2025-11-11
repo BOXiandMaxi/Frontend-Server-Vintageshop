@@ -1,0 +1,34 @@
+/* Shop.css */
+
+.shop-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* มือถือ */
+@media (max-width: 390px) {
+  .shop-container {
+    flex-direction: column;
+    align-items: flex-start; /* หรือ center ตามชอบ */
+    padding: 10px;
+    margin: 70px 0 0 0; /* margin ซ้ายขวาเป็น 0 เพื่อไม่ดัน */
+  }
+
+  .section-title{
+    font-size: 20px;
+  
+  }
+
+  /* หน้า Shop ใช้ Sidebar เล็ก */
+.featured-products.in-shop {
+  margin-left: 50px;
+  margin-right: auto;
+  max-width: calc(100% - 50px);
+  width: 300px;
+}
+}

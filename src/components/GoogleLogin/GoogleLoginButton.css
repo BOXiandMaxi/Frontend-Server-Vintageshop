@@ -1,0 +1,42 @@
+/* สไตล์พื้นฐานสำหรับปุ่ม Google Sign-In */
+#googleSignInDiv {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+/* สไตล์ส่วน container ของปุ่ม */
+#googleSignInDiv > div {
+  width: 45px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+    box-shadow: 
+        0 0 0 2px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(197, 168, 128, 0.6),
+        inset 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: sepia(0.3) contrast(1.1);
+}
+
+/* สไตล์เมื่อเมาส์ชี้ */
+#googleSignInDiv:hover > div {
+  transform: scale(1.1); /* ขยายขนาด 10% */
+  box-shadow: 
+        0 0 0 3px var(--vintage-gold),
+        0 0 25px rgba(197, 168, 128, 0.8),
+        inset 0 0 15px rgba(0, 0, 0, 0.3);
+    filter: sepia(0.5) contrast(1.2) brightness(1.05);
+    border-color: var(--vintage-gold);
+}
+
+/* สไตล์เมื่อคลิก */
+#googleSignInDiv:active > div {
+  transform: scale(0.95); /* ย่อขนาด 5% */
+}
+
+/* ส่วนไอคอนภายใน */
+#googleSignInDiv > div > div {
+  border-radius: 50% !important;
+}

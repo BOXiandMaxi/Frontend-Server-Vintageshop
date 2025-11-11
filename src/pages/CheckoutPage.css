@@ -1,0 +1,310 @@
+/* 
+  Vintage Checkout - Premium Edition
+  Designed with ❤️ by your AI Stylist
+*/
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   โทนสีและตัวแปรระดับพรีเมียม
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+   :root {
+    /* โทนสีหลัก */
+    --vintage-bg-color: #f5f5dc;
+    --vintage-text-color: #3b3a32;
+    --vintage-border-color: #a3a299;
+    --vintage-accent-color: #8b4513;
+    --vintage-red-price: #8a0303;
+    
+    /* โทนสีเสริมระดับพรีเมียม */
+    --vintage-gold-accent: #c5a880;
+    --vintage-deep-brown: #5a3a1e;
+    --vintage-paper-light: #fcf8f0;
+    
+    /* ฟอนต์ระดับพรีเมียม */
+    --vintage-font-heading: 'Bebas Neue', sans-serif;
+    --vintage-font-subhead: 'Playfair Display', serif;
+    --vintage-font-body: 'Cormorant Garamond', serif;
+    --vintage-font-accent: 'Cinzel Decorative', cursive;
+    
+    /* เอฟเฟกต์ */
+    --vintage-texture: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     พื้นฐานและโครงสร้างหลัก
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  body {
+    background-color: var(--vintage-paper-light);
+    font-family: var(--vintage-font-body);
+    color: var(--vintage-text-color);
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     กล่องหลักแบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .checkout-wrapper {
+    width: 200%;
+    max-width: 700px;
+    margin: 70px auto;
+    padding: 60px;
+    background: var(--vintage-bg-color);
+    background-image: var(--vintage-texture);
+    border: 3px double var(--vintage-border-color);
+    border-radius: 2px;
+    box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15),
+                inset 0 0 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* เอฟเฟกต์มุมกระดาษ */
+  .checkout-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, transparent 45%, var(--vintage-gold-accent) 45%);
+    opacity: 0.3;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     ส่วนหัวข้อแบบหรูหรา
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .co-title {
+    text-align: center;
+    margin: 0 0 50px;
+    padding-bottom: 20px;
+    font-size: 3.2rem;
+    font-family: var(--vintage-font-accent);
+    color: var(--vintage-deep-brown);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    position: relative;
+  }
+  
+  .co-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 3px;
+    background: linear-gradient(to right, 
+      transparent, 
+      var(--vintage-gold-accent), 
+      transparent);
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     การ์ดสินค้าแบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .co-product-card {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    align-items: center;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--vintage-border-color);
+    border-radius: 2px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .co-product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .co-product-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 3px solid var(--vintage-text-color);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .co-product-img:hover {
+    border-color: var(--vintage-gold-accent);
+  }
+  
+  .co-product-info h2 {
+    margin: 0 0 10px;
+    font-size: 1.8rem;
+    font-family: var(--vintage-font-subhead);
+    font-weight: 600;
+    color: var(--vintage-deep-brown);
+  }
+  
+  .co-price {
+    font-size: 1.5rem;
+    font-family: var(--vintage-font-heading);
+    color: var(--vintage-red-price);
+    letter-spacing: 1px;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     ฟอร์มแบบพรีเมียม
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .co-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .co-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .co-group label {
+    margin-bottom: 8px;
+    font-family: var(--vintage-font-subhead);
+    font-size: 1.1rem;
+    color: var(--vintage-deep-brown);
+    letter-spacing: 0.5px;
+  }
+  
+  .co-form input,
+  .co-form textarea {
+    padding: 15px 20px;
+    border: 1px solid var(--vintage-border-color);
+    border-radius: 2px;
+    font-size: 1.1rem;
+    font-family: var(--vintage-font-body);
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+  }
+  
+  .co-form input:focus,
+  .co-form textarea:focus {
+    outline: none;
+    border-color: var(--vintage-gold-accent);
+    box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.2);
+  }
+  
+  .co-form textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     ปุ่มแบบหรูหรา
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  .co-btn {
+    background: linear-gradient(to bottom, var(--vintage-accent-color), var(--vintage-deep-brown));
+    color: white;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 2px;
+    font-family: var(--vintage-font-accent);
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .co-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease;
+  }
+  
+  .co-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  .co-btn:hover::before {
+    left: 100%;
+  }
+  
+  .co-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Responsive Design
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  @media (max-width: 992px) {
+    .checkout-wrapper {
+      padding: 50px 40px;
+      margin: 60px auto;
+    }
+    
+    .co-title {
+      font-size: 2.8rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .checkout-wrapper {
+      width: 95%;
+      padding: 40px 30px;
+      margin: 50px auto;
+    }
+    
+    .co-title {
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+    }
+    
+    .co-product-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    
+    .co-product-img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .checkout-wrapper {
+      padding: 30px 20px;
+      margin: 40px auto;
+      width: 100%;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+    
+    .co-title {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    padding-bottom: 15px;
+    }
+    
+    .co-title::after {
+      width: 100px;
+    }
+    
+    .co-btn {
+      padding: 16px 30px;
+      font-size: 1.2rem;
+    }
+  }
