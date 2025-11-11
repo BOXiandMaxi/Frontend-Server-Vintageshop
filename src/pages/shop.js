@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FeaturedProducts from "../components/FeaturedProducts/FeaturedProducts";
 import Sidebar from "../components/Sidebar/Sidebar";

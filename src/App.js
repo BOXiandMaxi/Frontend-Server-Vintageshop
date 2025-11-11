@@ -33,11 +33,12 @@ const Home = () => (
 );
 
 const App = () => {
-  const [selectedCategory, setSelectedCategory] = useState("");
+// eslint-disable-next-line no-unused-vars
+const [selectedCategory, setSelectedCategory] = useState("");
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
+const handleCategoryChange = (category) => {
+  setSelectedCategory(category);
+};
 
   return (
     <UserProvider>
