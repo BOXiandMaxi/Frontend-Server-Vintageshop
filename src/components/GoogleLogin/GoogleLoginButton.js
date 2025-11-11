@@ -6,21 +6,19 @@ import "./GoogleLoginButton.css";
 const GoogleLoginButton = () => {
   const { setUserName, setUserEmail } = useUserContext();
 
-/* global google */
-useEffect(() => {
-  if (window.google) {
-    window.google.accounts.id.initialize({
-      client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-      callback: handleCredentialResponse,
-    });
-
-    window.google.accounts.id.renderButton(
-      document.getElementById("googleSignInDiv"),
-      { theme: "outline", size: "large" }
-    );
-  }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+  useEffect(() => {
+    if (window.google) {
+      window.google.accounts.id.initialize({
+        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        callback: handleCredentialResponse,
+      });
+  
+      window.google.accounts.id.renderButton(
+        document.getElementById("googleSignInDiv"),
+        { theme: "outline", size: "large" }
+      );
+    }
+  }, []);
 
   const handleCredentialResponse = (response) => {
     // response.credential คือ JWT token ที่ encode ข้อมูล user
