@@ -17,7 +17,8 @@ import SessionLoader from "./components/SessionLoader/SessionLoader";
 import CheckoutPage from "./pages/CheckoutPage";
 import PaymentPage from "./pages/PaymentPage";
 import ChatWidget from "./components/ChatWidget/ChatWidget";
-
+import LoginPage from "./components/Login/LoginPage";
+import RegisterPage from "./components/Register/RegisterPage";
 
 
 
