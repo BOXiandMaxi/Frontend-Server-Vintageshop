@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useUserContext } from "./UserContext";
+import { useUserContext } from "../Context/UserContext";
+
 
 const LoginPage = () => {
   const { setUserName, setUserEmail } = useUserContext();
