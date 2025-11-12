@@ -8,7 +8,7 @@ import ReactImageMagnify from 'react-image-magnify';
 const products = {
   1: {
     name: "Nirvana Come Ass You Are",
-    image: "https://vintage-shop-backend.infinityfree.me/item_shop/imagestshirt/Nirvana-come-ass-you-are.jpg", // รูปหลัก
+    image: "/imagestshirt/Nirvana-come-ass-you-are.jpg", // รูปหลัก
     price: "15,500 THB (USD 460)",
     details:
       "Come as You Are เป็นเพลงของวง Nirvana เขียนโดย Kurt Cobain จากอัลบั้ม Nevermind วางจำหน่ายในเดือนมีนาคม 1992 และเป็นซิงเกิลที่ 2 ของอัลบั้ม เพลงนี้ติดท็อป 40 บน Billboard Hot 100 อันดับที่ 32 และติดท็อป 10 ใน UK Singles Chart อันดับที่ 9 รวมถึงขึ้นท็อป 10 ใน 8 ประเทศ.",
@@ -18,11 +18,11 @@ const products = {
       "Detail: ไม่พอเจอรูตามตัว สีเสื้อดรอปออกเฟด",
     ],
     gallery: [
-      "https://vintage-shop-backend.infinityfree.me/item_shop/DetailNirvana/nir1.jpg",
-      "https://vintage-shop-backend.infinityfree.me/item_shop/DetailNirvana/nir2.jpg",
-      "https://vintage-shop-backend.infinityfree.me/item_shop/DetailNirvana/nir3.jpg",
-      "https://vintage-shop-backend.infinityfree.me/item_shop/DetailNirvana/nir4.jpg",
-      "https://vintage-shop-backend.infinityfree.me/item_shop/DetailNirvana/nir5.jpg",
+      "/DetailNirvana/nir1.jpg",
+      "/DetailNirvana/nir2.jpg",
+      "/DetailNirvana/nir3.jpg",
+      "/DetailNirvana/nir4.jpg",
+      "/DetailNirvana/nir5.jpg",
     ],
   },
   2: {

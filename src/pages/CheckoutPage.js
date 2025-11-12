@@ -1,13 +1,13 @@
+// src/pages/CheckoutPage.js
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./CheckoutPage.css";
 
 export default function CheckoutPage() {
-  const { id } = useParams();
+  const { id } = useParams(); // product id
   const nav = useNavigate();
   const location = useLocation();
 
-  // รับสินค้าจาก state (ถ้ามี)
   const initialProduct = location.state?.product || null;
   const [product, setProduct] = useState(initialProduct);
   const [form, setForm] = useState({
@@ -16,7 +16,7 @@ export default function CheckoutPage() {
     phone: ""
   });
 
-  /* ── แปลง path เป็น URL เต็ม ── */
+  // แปลง path เป็น URL เต็ม
   const fixImageUrl = (img) => {
     if (!img) return "https://placehold.co/200x200?text=No+Image";
     return img.startsWith("http")
@@ -24,10 +24,9 @@ export default function CheckoutPage() {
       : `https://vintage-shop-backend.infinityfree.me/item_shop${img}`;
   };
 
-  /* ── โหลดสินค้า ── */
+  // โหลดสินค้า
   useEffect(() => {
     if (product) {
-      // ถ้ามี product จาก state ให้แก้ image เป็น URL เต็ม
       setProduct({
         ...product,
         image: fixImageUrl(product.image),
@@ -59,13 +58,21 @@ export default function CheckoutPage() {
     fetchProduct();
   }, [id, nav, product]);
 
-  /* ── handle input ── */
+  // handle input
   const handleChange = e =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  /* ── ส่งคำสั่งซื้อ ── */
+  // submit order
   const handleSubmit = async e => {
     e.preventDefault();
+
+    // debug: เช็คข้อมูลก่อนส่ง
+    console.log("Submitting order:", {
+      product_id: Number(id),
+      qty: 1,
+      ...form
+    });
+
     try {
       const res = await fetch(
         "https://vintage-shop-backend.infinityfree.me/item_shop/submit_order.php",
@@ -82,6 +89,8 @@ export default function CheckoutPage() {
       );
 
       const data = await res.json();
+      console.log("Response from backend:", data);
+
       if (!res.ok || !data.success) {
         throw new Error(data.error || "สั่งซื้อไม่สำเร็จ");
       }
@@ -101,11 +110,10 @@ export default function CheckoutPage() {
 
       <div className="co-product-card">
         <img
-          src={product.image} // ใช้ image ที่แก้เป็น URL เต็มแล้ว
+          src={product.image}
           alt={product.name || "Product"}
           className="co-product-img"
         />
-
         <div className="co-product-info">
           <h2>{product.name}</h2>
           <p className="co-price">{product.price_text || product.price}</p>
