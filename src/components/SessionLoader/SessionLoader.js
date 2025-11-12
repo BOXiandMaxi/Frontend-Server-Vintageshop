@@ -8,12 +8,13 @@ const SessionLoader = ({ children }) => {
   useEffect(() => {
     const checkSession = async () => {
       try {
-        const response = await axios.get('https://vintage-shop-backend.infinityfree.me/loginandregister/check_login_v2.php', { withCredentials: true });
-          
+        const response = await axios.get(
+          'https://vintage-shop-backend.infinityfree.me/loginandregister/check_login.php',
+          { withCredentials: true }
+        );
+
         if (response.data.status === "ok") {
           const { firstName, email } = response.data;
-
-          // ✅ เซ็ตค่าลง context
           setUserName(firstName);
           setUserEmail(email);
         } else {
