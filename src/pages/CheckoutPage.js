@@ -7,6 +7,7 @@ export default function CheckoutPage() {
   const nav = useNavigate();
   const location = useLocation();
 
+  // รับสินค้าจาก state (ถ้ามี)
   const initialProduct = location.state?.product || null;
   const [product, setProduct] = useState(initialProduct);
   const [form, setForm] = useState({
@@ -15,21 +16,27 @@ export default function CheckoutPage() {
     phone: ""
   });
 
+  /* ── โหลดสินค้า ── */
   useEffect(() => {
-    if (product) return;
+    if (product) return; // มีข้อมูลแล้วไม่ต้อง fetch อีก
 
     const fetchProduct = async () => {
       try {
         const res = await fetch(
           `https://vintage-shop-backend.infinityfree.me/item_shop/get_product_detail.php?id=${id}`,
-          { credentials: "include" }
+          {
+            credentials: "include" // ถ้ามี session
+          }
         );
         if (!res.ok) throw new Error("ไม่พบข้อมูลสินค้า");
         const data = await res.json();
 
-        // fallback รูปหลัก
+        // fallback รูป
         if (!data.image_url) {
           data.image_url = "https://placehold.co/200x200?text=No+Image";
+        } else if (!data.image_url.startsWith("http")) {
+          // ถ้าเป็น path ในเซิร์ฟเวอร์ ให้เติม host
+          data.image_url = `https://vintage-shop-backend.infinityfree.me/item_shop${data.image_url}`;
         }
 
         setProduct(data);
@@ -42,9 +49,11 @@ export default function CheckoutPage() {
     fetchProduct();
   }, [id, nav, product]);
 
+  /* ── handle input ── */
   const handleChange = e =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+  /* ── ส่งคำสั่งซื้อ ── */
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -82,12 +91,8 @@ export default function CheckoutPage() {
 
       <div className="co-product-card">
         <img
-          src={
-            product.image_url.startsWith("http")
-              ? product.image_url
-              : `https://vintage-shop-backend.infinityfree.me/item_shop${product.image_url}`
-          }
-          alt={product.name}
+          src={product.image_url}
+          alt={product.name || "Product"}
           className="co-product-img"
         />
 
