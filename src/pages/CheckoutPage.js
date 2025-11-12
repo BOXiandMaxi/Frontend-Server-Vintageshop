@@ -1,61 +1,82 @@
-import { useParams, useNavigate , useLocation} from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./CheckoutPage.css";          // ← เพิ่มไฟล์สไตล์
+import "./CheckoutPage.css";
 
 export default function CheckoutPage() {
   const { id } = useParams();
-  const nav    = useNavigate();
+  const nav = useNavigate();
   const location = useLocation();
 
-   // ✅ รับสินค้าจาก state (ถ้ามี)
+  // รับสินค้าจาก state (ถ้ามี)
   const initialProduct = location.state?.product || null;
-
   const [product, setProduct] = useState(initialProduct);
   const [form, setForm] = useState({
     full_name: "",
-    address:   "",
-    phone:     ""
+    address: "",
+    phone: ""
   });
 
-  /* ── โหลดสินค้า ─────────────────────────── */
-  // ✅ ถ้าไม่มี product จาก state → fallback ไปโหลดจาก backend
+  /* ── โหลดสินค้า ── */
   useEffect(() => {
     if (product) return; // มีข้อมูลแล้วไม่ต้อง fetch อีก
-    fetch(`https://vintage-shop-backend.infinityfree.me/item_shop/get_product_detail.php?id=${id}`)
-      .then(r => r.ok ? r.json() : Promise.reject("ไม่พบข้อมูลสินค้า"))
-      .then(setProduct)
-      .catch(err => {
-        alert("โหลดข้อมูลสินค้าไม่สำเร็จ: " + err);
+
+    const fetchProduct = async () => {
+      try {
+        const res = await fetch(
+          `https://vintage-shop-backend.infinityfree.me/item_shop/get_product_detail.php?id=${id}`,
+          {
+            credentials: "include" // เพื่อใช้ cookie/session ถ้ามี
+          }
+        );
+        if (!res.ok) throw new Error("ไม่พบข้อมูลสินค้า");
+        const data = await res.json();
+
+        // fallback รูป
+        if (!data.image_url) {
+          data.image_url = "https://placehold.co/200x200?text=No+Image";
+        }
+
+        setProduct(data);
+      } catch (err) {
+        alert("โหลดข้อมูลสินค้าไม่สำเร็จ: " + err.message);
         nav("/");
-      });
+      }
+    };
+
+    fetchProduct();
   }, [id, nav, product]);
 
-  /* ── handle input ───────────────────────── */
+  /* ── handle input ── */
   const handleChange = e =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  /* ── ส่งคำสั่งซื้อ ─────────────────────── */
+  /* ── ส่งคำสั่งซื้อ ── */
   const handleSubmit = async e => {
     e.preventDefault();
-    try{
-      const res = await fetch("https://vintage-shop-backend.infinityfree.me/item_shop/submit_order.php",{
-        method:"POST",
-        headers:{ "Content-Type":"application/json" },
-        body: JSON.stringify({
-          product_id: Number(id),
-          qty: 1,                       // ส่งค่า 1 ตายตัว
-          ...form
-        })
-      });
+    try {
+      const res = await fetch(
+        "https://vintage-shop-backend.infinityfree.me/item_shop/submit_order.php",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include", // ถ้าต้องใช้ session
+          body: JSON.stringify({
+            product_id: Number(id),
+            qty: 1,
+            ...form
+          })
+        }
+      );
+
       const data = await res.json();
-      if(!res.ok || !data.success){
+      if (!res.ok || !data.success) {
         throw new Error(data.error || "สั่งซื้อไม่สำเร็จ");
       }
-      // ===== ใส่ 2 บรรทัดนี้ =====
+
       alert(`สั่งซื้อสำเร็จ! หมายเลขออเดอร์ #${data.order_id}`);
       nav(`/payment/${data.order_id}`);
-    }catch(err){
-      alert("เกิดข้อผิดพลาด: "+err.message);
+    } catch (err) {
+      alert("เกิดข้อผิดพลาด: " + err.message);
     }
   };
 
@@ -66,14 +87,8 @@ export default function CheckoutPage() {
       <h1 className="co-title">ยืนยันการสั่งซื้อ</h1>
 
       <div className="co-product-card">
-      <img
-          src={
-            product?.image_url
-              ? (product.image_url.startsWith("http")
-                  ? product.image_url
-                  : `https://vintage-shop-backend.infinityfree.me${product.image_url.startsWith("/") ? product.image_url : "/" + product.image_url}`)
-              : "https://via.placeholder.com/200x200?text=No+Image"
-          }
+        <img
+          src={product.image_url}
           alt={product.name}
           className="co-product-img"
         />
