@@ -12,13 +12,11 @@ const SessionLoader = ({ children }) => {
           'https://vintage-shop-backend.infinityfree.me/loginandregister/check_login_v2.php',
           { withCredentials: true }
         );
-
-        // ✅ แก้ให้ตรงกับ response ของ check_login_v2.php
+    
         if (response.data.loggedIn) {
           const { firstName, email } = response.data;
           setUserName(firstName);
           setUserEmail(email);
-          console.log("✅ Session loaded:", { firstName, email });
         } else {
           console.warn("⛔ ไม่มี session login");
         }
@@ -26,7 +24,7 @@ const SessionLoader = ({ children }) => {
         console.error("❌ Session check error:", error);
       }
     };
-
+    
     checkSession();
   }, [setUserName, setUserEmail]);
 
