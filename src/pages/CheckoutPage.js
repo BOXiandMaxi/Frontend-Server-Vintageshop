@@ -16,30 +16,40 @@ export default function CheckoutPage() {
     phone: ""
   });
 
+  /* ── แปลง path เป็น URL เต็ม ── */
+  const fixImageUrl = (img) => {
+    if (!img) return "https://placehold.co/200x200?text=No+Image";
+    return img.startsWith("http")
+      ? img
+      : `https://vintage-shop-backend.infinityfree.me/item_shop${img}`;
+  };
+
   /* ── โหลดสินค้า ── */
   useEffect(() => {
-    if (product) return; // มีข้อมูลแล้วไม่ต้อง fetch อีก
+    if (product) {
+      // ถ้ามี product จาก state ให้แก้ image เป็น URL เต็ม
+      setProduct({
+        ...product,
+        image: fixImageUrl(product.image),
+        gallery: product.gallery?.map(fixImageUrl) || []
+      });
+      return;
+    }
 
     const fetchProduct = async () => {
       try {
         const res = await fetch(
           `https://vintage-shop-backend.infinityfree.me/item_shop/get_product_detail.php?id=${id}`,
-          {
-            credentials: "include" // ถ้ามี session
-          }
+          { credentials: "include" }
         );
         if (!res.ok) throw new Error("ไม่พบข้อมูลสินค้า");
         const data = await res.json();
 
-        // fallback รูป
-        if (!data.image_url) {
-          data.image_url = "https://placehold.co/200x200?text=No+Image";
-        } else if (!data.image_url.startsWith("http")) {
-          // ถ้าเป็น path ในเซิร์ฟเวอร์ ให้เติม host
-          data.image_url = `https://vintage-shop-backend.infinityfree.me/item_shop${data.image_url}`;
-        }
-
-        setProduct(data);
+        setProduct({
+          ...data,
+          image: fixImageUrl(data.image_url),
+          gallery: data.gallery?.map(fixImageUrl) || []
+        });
       } catch (err) {
         alert("โหลดข้อมูลสินค้าไม่สำเร็จ: " + err.message);
         nav("/");
@@ -91,7 +101,7 @@ export default function CheckoutPage() {
 
       <div className="co-product-card">
         <img
-          src={product.image_url}
+          src={product.image} // ใช้ image ที่แก้เป็น URL เต็มแล้ว
           alt={product.name || "Product"}
           className="co-product-img"
         />
