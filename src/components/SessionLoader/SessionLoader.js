@@ -9,7 +9,7 @@ const SessionLoader = ({ children }) => {
     const checkSession = async () => {
       try {
         const response = await axios.get(
-          'https://vintage-shop-backend.infinityfree.me/loginandregister/check_login.php',
+          'https://vintage-shop-backend.infinityfree.me/loginandregister/check_login_v2.php',
           { withCredentials: true }
         );
 
