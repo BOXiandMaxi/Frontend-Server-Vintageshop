@@ -67,9 +67,11 @@ export default function CheckoutPage() {
 
       <div className="co-product-card">
       <img
-      src={product.image_url.startsWith("/")
-        ? product.image_url               // /imagestshirt/xxx.jpg  ⇒ ใช้ dev-server 3000
-        : `https://frontend-server-vintageshop-v776.vercel.app/${product.image_url}`}
+      src={product?.image_url
+        ? (product.image_url.startsWith("/")
+            ? product.image_url
+            : `https://frontend-server-vintageshop-v776.vercel.app/${product.image_url}`)
+        : "https://via.placeholder.com/200x200?text=No+Image"}    
           alt={product.name}
           className="co-product-img"     /* ← ใส่ class ตรงกับ CSS */
       />
