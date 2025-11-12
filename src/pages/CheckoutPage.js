@@ -7,7 +7,6 @@ export default function CheckoutPage() {
   const nav = useNavigate();
   const location = useLocation();
 
-  // รับสินค้าจาก state (ถ้ามี)
   const initialProduct = location.state?.product || null;
   const [product, setProduct] = useState(initialProduct);
   const [form, setForm] = useState({
@@ -16,22 +15,19 @@ export default function CheckoutPage() {
     phone: ""
   });
 
-  /* ── โหลดสินค้า ── */
   useEffect(() => {
-    if (product) return; // มีข้อมูลแล้วไม่ต้อง fetch อีก
+    if (product) return;
 
     const fetchProduct = async () => {
       try {
         const res = await fetch(
           `https://vintage-shop-backend.infinityfree.me/item_shop/get_product_detail.php?id=${id}`,
-          {
-            credentials: "include" // เพื่อใช้ cookie/session ถ้ามี
-          }
+          { credentials: "include" }
         );
         if (!res.ok) throw new Error("ไม่พบข้อมูลสินค้า");
         const data = await res.json();
 
-        // fallback รูป
+        // fallback รูปหลัก
         if (!data.image_url) {
           data.image_url = "https://placehold.co/200x200?text=No+Image";
         }
@@ -46,11 +42,9 @@ export default function CheckoutPage() {
     fetchProduct();
   }, [id, nav, product]);
 
-  /* ── handle input ── */
   const handleChange = e =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  /* ── ส่งคำสั่งซื้อ ── */
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -59,7 +53,7 @@ export default function CheckoutPage() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include", // ถ้าต้องใช้ session
+          credentials: "include",
           body: JSON.stringify({
             product_id: Number(id),
             qty: 1,
@@ -88,7 +82,11 @@ export default function CheckoutPage() {
 
       <div className="co-product-card">
         <img
-          src={product.image_url}
+          src={
+            product.image_url.startsWith("http")
+              ? product.image_url
+              : `https://vintage-shop-backend.infinityfree.me/item_shop${product.image_url}`
+          }
           alt={product.name}
           className="co-product-img"
         />
