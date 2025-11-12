@@ -67,14 +67,17 @@ export default function CheckoutPage() {
 
       <div className="co-product-card">
       <img
-      src={product?.image_url
-        ? (product.image_url.startsWith("/")
-            ? product.image_url
-            : `https://frontend-server-vintageshop-v776.vercel.app/${product.image_url}`)
-        : "https://via.placeholder.com/200x200?text=No+Image"}    
+          src={
+            product?.image_url
+              ? (product.image_url.startsWith("http")
+                  ? product.image_url
+                  : `https://vintage-shop-backend.infinityfree.me${product.image_url.startsWith("/") ? product.image_url : "/" + product.image_url}`)
+              : "https://via.placeholder.com/200x200?text=No+Image"
+          }
           alt={product.name}
-          className="co-product-img"     /* ← ใส่ class ตรงกับ CSS */
-      />
+          className="co-product-img"
+        />
+
         <div className="co-product-info">
           <h2>{product.name}</h2>
           <p className="co-price">{product.price_text || product.price}</p>
