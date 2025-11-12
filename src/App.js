@@ -49,6 +49,8 @@ const handleCategoryChange = (category) => {
           <Sidebar onCategoryChange={handleCategoryChange} />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
             {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/ProductDetail/:id" element={<ProductDetail />} />
             <Route path="/shop/:category" element={<Shop />} />
