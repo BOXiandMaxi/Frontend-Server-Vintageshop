@@ -1,12 +1,16 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate , useLocation} from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./CheckoutPage.css";          // ← เพิ่มไฟล์สไตล์
 
 export default function CheckoutPage() {
   const { id } = useParams();
   const nav    = useNavigate();
+  const location = useLocation();
 
-  const [product, setProduct] = useState(null);
+   // ✅ รับสินค้าจาก state (ถ้ามี)
+  const initialProduct = location.state?.product || null;
+
+  const [product, setProduct] = useState(initialProduct);
   const [form, setForm] = useState({
     full_name: "",
     address:   "",
@@ -14,18 +18,17 @@ export default function CheckoutPage() {
   });
 
   /* ── โหลดสินค้า ─────────────────────────── */
+  // ✅ ถ้าไม่มี product จาก state → fallback ไปโหลดจาก backend
   useEffect(() => {
+    if (product) return; // มีข้อมูลแล้วไม่ต้อง fetch อีก
     fetch(`https://vintage-shop-backend.infinityfree.me/item_shop/get_product_detail.php?id=${id}`)
-      .then(r => {
-        if (!r.ok) throw new Error("ไม่พบข้อมูลสินค้า");
-        return r.json();
-      })
+      .then(r => r.ok ? r.json() : Promise.reject("ไม่พบข้อมูลสินค้า"))
       .then(setProduct)
       .catch(err => {
-        alert("โหลดข้อมูลสินค้าไม่สำเร็จ: " + err.message);
+        alert("โหลดข้อมูลสินค้าไม่สำเร็จ: " + err);
         nav("/");
       });
-  }, [id, nav]);
+  }, [id, nav, product]);
 
   /* ── handle input ───────────────────────── */
   const handleChange = e =>

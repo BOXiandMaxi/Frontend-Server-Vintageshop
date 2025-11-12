@@ -207,7 +207,7 @@ function ProductDetail() {
 
   // ฟังก์ชันกดปุ่ม ซื้อเลย ให้ไปหน้า /checkout/:id
   const handleBuyNow = () => {
-    navigate(`/checkout/${id}`);
+    navigate(`/checkout/${id}`, { state: { product } });
   };
 
   return (
