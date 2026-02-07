@@ -40,7 +40,7 @@
 
 ### 1. หน้าแรก (Homepage)
 หน้า Landing Page ที่รวบรวมสินค้าแนะนำและโปรโมชั่นล่าสุด
-![Homepage Screenshot](home.png)
+![Homepage Screenshot](home.jpg)
 ### 2. หน้ารายการสินค้า (Shop / Product Listing)
 แสดง Grid ของสินค้าทั้งหมด พร้อมตัวเลือกในการกรองและค้นหา
 ![Shop Page Screenshot](https://via.placeholder.com/800x450?text=Shop+Page+Screenshot)
