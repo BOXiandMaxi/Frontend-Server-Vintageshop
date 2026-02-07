@@ -1,71 +1,104 @@
-# Getting Started with Create React App
+# 🛍️ Vintage Shop - E-Commerce Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Banner Image](https://via.placeholder.com/1200x400?text=Vintage+Shop+Banner)
+ยินดีต้อนรับสู่ **Vintage Shop** เว็บแอปพลิเคชันสำหรับซื้อขายสินค้าวินเทจที่เน้นประสบการณ์การใช้งาน (UX) ที่ลื่นไหล และหน้าตาการใช้งาน (UI) ที่ทันสมัย รองรับการแสดงผลทุกอุปกรณ์ (Responsive Design)
 
-## Available Scripts
+🔗 **Live Demo:** [https://frontend-server-vintageshop-oyhq.vercel.app/](https://frontend-server-vintageshop-oyhq.vercel.app/)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📑 สารบัญ (Table of Contents)
 
-Runs the app in the development mode.\
-Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
+- [ฟีเจอร์หลัก (Key Features)](#-ฟีเจอร์หลัก-key-features)
+- [ภาพตัวอย่างระบบ (System Screenshots)](#-ภาพตัวอย่างระบบ-system-screenshots)
+- [เทคโนโลยีที่ใช้ (Tech Stack)](#-เทคโนโลยีที่ใช้-tech-stack)
+- [การติดตั้งและรันโปรเจกต์ (Installation)](#-การติดตั้งและรันโปรเจกต์-installation)
+- [โครงสร้างไฟล์ (Folder Structure)](#-โครงสร้างไฟล์-folder-structure)
+- [ผู้จัดทำ (Author)](#-ผู้จัดทำ-author)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ✨ ฟีเจอร์หลัก (Key Features)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+โปรเจกต์นี้ถูกออกแบบโดยคำนึงถึง **User Experience (UX)** และ **User Interface (UI)** เป็นหลัก เพื่อให้ผู้ใช้งานสามารถเลือกซื้อสินค้าได้อย่างง่ายดาย
 
-### `npm run build`
+### 🎨 UX/UI Design & Frontend
+* **Responsive Layout:** รองรับการใช้งานทั้งบน Desktop, Tablet และ Mobile
+* **Modern Navigation:** เมนูบาร์ที่ใช้งานง่าย เข้าถึงหมวดหมู่สินค้าได้รวดเร็ว
+* **Interactive Elements:** มีเอฟเฟกต์ Hover, การเปลี่ยนหน้า (Transition) และ Feedback เมื่อผู้ใช้กดปุ่มต่างๆ
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🛒 ระบบการซื้อขาย (E-Commerce System)
+* **Product Catalog:** แสดงรายการสินค้าพร้อมรูปภาพ ราคา และป้ายกำกับ (New/Sale)
+* **Product Filtering:** ระบบค้นหาและกรองสินค้าตามหมวดหมู่
+* **Product Detail Page:** หน้ารายละเอียดสินค้าที่แสดงข้อมูลครบถ้วน พร้อมปุ่ม "Add to Cart"
+* **Shopping Cart:** ระบบตะกร้าสินค้าที่คำนวณราคารวมอัตโนมัติ (Real-time calculation)
+* **Checkout System:** แบบฟอร์มสั่งซื้อที่ตรวจสอบข้อมูล (Validation) ก่อนยืนยัน
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📸 ภาพตัวอย่างระบบ (System Screenshots)
 
-### `npm run eject`
+### 1. หน้าแรก (Homepage)
+หน้า Landing Page ที่รวบรวมสินค้าแนะนำและโปรโมชั่นล่าสุด
+![Homepage Screenshot](https://via.placeholder.com/800x450?text=Homepage+Screenshot)
+### 2. หน้ารายการสินค้า (Shop / Product Listing)
+แสดง Grid ของสินค้าทั้งหมด พร้อมตัวเลือกในการกรองและค้นหา
+![Shop Page Screenshot](https://via.placeholder.com/800x450?text=Shop+Page+Screenshot)
+### 3. หน้ารายละเอียดสินค้า (Product Details)
+แสดงรูปภาพขนาดใหญ่ ข้อมูลสินค้า และปุ่มสั่งซื้อที่เด่นชัด
+![Product Detail Screenshot](https://via.placeholder.com/800x450?text=Product+Detail+Screenshot)
+### 4. ตะกร้าสินค้าและการชำระเงิน (Cart & Checkout)
+หน้าสรุปรายการสั่งซื้อที่แสดงยอดรวม และฟอร์มสำหรับกรอกที่อยู่จัดส่ง
+![Cart Screenshot](https://via.placeholder.com/800x450?text=Cart+and+Checkout+Screenshot)
+### 5. การแสดงผลบนมือถือ (Mobile Responsive)
+ตัวอย่างการแสดงผลเมื่อเปิดผ่านสมาร์ทโฟน
+![Mobile View Screenshot](https://via.placeholder.com/400x800?text=Mobile+Responsive+View)
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🛠️ เทคโนโลยีที่ใช้ (Tech Stack)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* **Frontend:** React.js, HTML5, CSS3 (Tailwind CSS / Styled Components)
+* **Deployment:** Vercel
+* **Version Control:** Git & GitHub
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🚀 การติดตั้งและรันโปรเจกต์ (Installation)
 
-## Learn More
+หากต้องการรันโปรเจกต์นี้ในเครื่องของคุณ (Local Environment) ให้ทำตามขั้นตอนดังนี้:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Clone Repository**
+   ```bash
+   git clone [https://github.com/BOXiandMaxi/frontend-server-vintageshop.git](https://github.com/BOXiandMaxi/frontend-server-vintageshop.git)
+   cd frontend-server-vintageshop
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ติดตั้ง Dependencies
 
-### Code Splitting
+Bash
+npm install
+# หรือ
+yarn install
+รันโปรเจกต์ (Start Server)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Bash
+npm start
+เปิด Browser และไปที่ http://localhost:3000
 
-### Analyzing the Bundle Size
+📂 โครงสร้างไฟล์ (Folder Structure)
+Plaintext
+frontend-server-vintageshop/
+├── public/          # Static assets (images, icons)
+├── src/
+│   ├── components/  # Reusable UI components (Navbar, Button, Card)
+│   ├── pages/       # Main pages (Home, Shop, ProductDetail)
+│   ├── styles/      # CSS / Style files
+│   ├── App.js       # Main application component
+│   └── index.js     # Entry point
+├── package.json     # Project dependencies
+└── README.md        # Project documentation
+👨‍💻 ผู้จัดทำ (Author)
+Keattisak Sari
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+GitHub: @BOXiandMaxi
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# vintage-shop-github" 
+Website: Vintage Shop Demo
